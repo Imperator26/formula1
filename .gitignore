@@ -6,6 +6,7 @@
 .DS_Store
 *.zip
 *.txt
+*.ipynb
 
 # R
 .Rapp.history
