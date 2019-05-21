@@ -1,7 +1,19 @@
+# Directories
 /data
+/log
 
+# Files
 .DS_Store
 *.zip
+*.txt
+
+# R
+.Rapp.history
+.RData
+.Rhistory
+
+# Trained models
+#*.hdf5
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
