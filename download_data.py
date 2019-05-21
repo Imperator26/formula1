@@ -1,40 +1,25 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[6]:
-
-
 import requests as r
 import shutil
 from zipfile import ZipFile
 
+def download_file(url):
+    file_name = url.split("/")[-1]
 
-# In[9]:
+    res = r.get(url, stream=True)
 
+    with open(file_name, "wb") as f:
+        shutil.copyfileobj(res.raw, f)
 
-url = "http://ergast.com/downloads/f1db_csv.zip"
+    return file_name
 
+f1db_url = "http://ergast.com/downloads/f1db_csv.zip"
+file_name = download_file(f1db_url)
 
-# In[10]:
-
-
-file_name = url.split("/")[-1]
-
-r = requests.get(url, stream=True)
-
-with open(file_name, "wb") as f:
-    shutil.copyfileobj(r.raw, f)
-
-
-# In[11]:
-
-
-with ZipFile(file_name,"r") as zip_ref:
+with ZipFile(file_name, "r") as zip_ref:
     zip_ref.extractall("./data")
 
-
-# In[ ]:
-
-
-
-
+f1db_schema_url = "http://ergast.com/schemas/f1db_schema.txt"
+file_name = download_file(f1db_schema_url)
