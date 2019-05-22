@@ -4,8 +4,9 @@
 
 # Files
 .DS_Store
-*.zip
+*.csv
 *.txt
+*.zip
 
 # R
 .Rapp.history
